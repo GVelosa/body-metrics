@@ -1,0 +1,12 @@
+# Base colors
+BLACK = "#000000"
+WHITE = "#BFBFBF"
+BEIGE = "#F6FABD"
+GRAY = "#595959"
+GRAY_LIGHT = "#8C8C8C"
+
+# Red palette
+RED_DARKEST = "#260202"
+RED_DARK = "#400303"
+RED = "#590303"
+RED_LIGHT = "#A30000"
