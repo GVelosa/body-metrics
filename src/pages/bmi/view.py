@@ -18,14 +18,9 @@ def bmi(page: ft.Page):
     user_weight = ft.TextField(label="Weight(KG)",keyboard_type=ft.KeyboardType.NUMBER,input_filter=ft.NumbersOnlyInputFilter()) 
 
     info_card = ft.Container(
-                    expand=,
                     border_radius=10,
                     padding=16,
                     bgcolor=colors.RED,
-                    constraints=ft.BoxConstraints(
-                        max_width=400,
-                        max_height=500
-                    ),
                     content=
                         ft.Column(
                             alignment=ft.MainAxisAlignment.CENTER,
