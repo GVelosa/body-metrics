@@ -2,33 +2,34 @@ import flet as ft
 
 from theme import colors
 
+from components.appbar import appbar
+
 from pages.home import home
 from pages.bmi import bmi
 
 def main(page: ft.Page):
-    page.title = "Financial Analytics"
-    page.window.width = 1792
-    page.window.height = 1008
+    page.title = "Body Metrics"
+    page.window.maximized = True
 
     def route_change():
         page.views.clear()
         page.views.append(
             ft.View(
                 route="/",
-                appbar= None,
-                bgcolor = colors.WHITE,
+                appbar= appbar(page),
+                bgcolor = colors.GRAY_LIGHT,
                 controls=[
                     home(page)
                 ],
             )
         )
 
-        if page.route == "/imc":
+        if page.route == "/bmi":
             page.views.append(
                 ft.View(
-                    route="/imc",
-                    appbar= None,
-                    bgcolor = colors.WHITE,
+                    route="/bmi",
+                    appbar= appbar(page),
+                    bgcolor = colors.GRAY_LIGHT,
                     controls=[
                         bmi(page)
                     ],

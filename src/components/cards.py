@@ -22,8 +22,8 @@ def content_card(on_click):
                             alignment=ft.MainAxisAlignment.CENTER,
                             spacing=2,
                             controls=[
-                                ft.Text("Name", color=colors.WHITE, weight=ft.FontWeight.BOLD, size=18),
-                                ft.Text("Small Description", color=colors.GRAY_LIGHT, size=14)
+                                ft.Text("Name", color=colors.CONTRAT_LIGHT, weight=ft.FontWeight.BOLD, size=18),
+                                ft.Text("Small Description",weight=ft.FontWeight.BOLD, color=colors.GRAY_LIGHT, size=14)
                             ]
                         )
                     ]
