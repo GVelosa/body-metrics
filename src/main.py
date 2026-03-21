@@ -4,8 +4,8 @@ from theme import colors
 
 from components.appbar import appbar
 
-from pages.home import home
-from pages.bmi import bmi
+from pages.home.view import home
+from pages.bmi.view import bmi
 
 def main(page: ft.Page):
     page.title = "Body Metrics"
