@@ -8,13 +8,13 @@ def functionbutton(on_click, name):
         height=70,
         content=name,
         style=ft.ButtonStyle(
-            bgcolor=colors.PRETTY_TWILIGHT_NIGHT,
+            bgcolor=colors.FANTASY_CONSOLE_SKY,
             color= colors.WHITE,
             text_style=ft.TextStyle(size=12, weight=ft.FontWeight.W_500),
             shape=ft.RoundedRectangleBorder(radius=0),
             side={
                 ft.ControlState.DEFAULT: ft.BorderSide(
-                    3, color=colors.ELITE_BLUE
+                    3, color=colors.DARK_IMPERIAL_BLUE
                 ),
                 ft.ControlState.HOVERED: ft.BorderSide(
                     3, color=colors.ENDEAVOUR

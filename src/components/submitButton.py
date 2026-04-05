@@ -9,12 +9,12 @@ def submitbutton(on_click):
         content="Submit",
         on_click=on_click,
         style=ft.ButtonStyle(
-            bgcolor=colors.PRETTY_TWILIGHT_NIGHT,
+            bgcolor=colors.FANTASY_CONSOLE_SKY,
             color= colors.WHITE,
-            text_style=ft.TextStyle(size=12, weight=ft.FontWeight.W_500),
+            text_style=ft.TextStyle(size=16, weight=ft.FontWeight.W_500),
             side={
                 ft.ControlState.DEFAULT: ft.BorderSide(
-                    3, color=colors.ELITE_BLUE
+                    3, color=colors.DARK_IMPERIAL_BLUE
                 ),
                 ft.ControlState.HOVERED: ft.BorderSide(
                     3, color=colors.ENDEAVOUR

@@ -13,7 +13,7 @@ def main(page: ft.Page):
         page.views.append(
             ft.View(
                 route="/",
-                bgcolor = colors.GRAY_LIGHT,
+                bgcolor = colors.WHITE,
                 controls=[
                     home_view(page)
                 ],
