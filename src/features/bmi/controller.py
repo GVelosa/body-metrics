@@ -1,5 +1,3 @@
-import flet as ft
-
 bmi_table = [
         (16, "Severe Thinness", "0"),
         (17, "Moderate Thinness", "0"),
@@ -11,7 +9,7 @@ bmi_table = [
         (float("inf"), "Obese Class III", "3"),
     ]
 
-def bmi_cauculator(
+def bmi_calculator(
         user_weight,
         user_height,
         height_text,

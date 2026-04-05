@@ -2,10 +2,7 @@ import flet as ft
 
 from theme import colors
 
-from components.appbar import appbar
-
-from pages.home.view import home
-from pages.bmi.view import bmi
+from pages.home.view import home_view
 
 def main(page: ft.Page):
     page.title = "Body Metrics"
@@ -16,25 +13,12 @@ def main(page: ft.Page):
         page.views.append(
             ft.View(
                 route="/",
-                appbar= appbar(page),
                 bgcolor = colors.GRAY_LIGHT,
                 controls=[
-                    home(page)
+                    home_view(page)
                 ],
             )
         )
-
-        if page.route == "/bmi":
-            page.views.append(
-                ft.View(
-                    route="/bmi",
-                    appbar= appbar(page),
-                    bgcolor = colors.GRAY_LIGHT,
-                    controls=[
-                        bmi(page)
-                    ],
-                )
-            )
 
         page.update()
     async def view_pop(e):
@@ -46,7 +30,7 @@ def main(page: ft.Page):
 
     page.on_route_change = route_change
     page.on_view_pop = view_pop
-
     route_change()
+
 if __name__ == "__main__":
     ft.run(main)

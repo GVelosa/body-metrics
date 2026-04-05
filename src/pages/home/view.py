@@ -2,30 +2,103 @@ import flet as ft
 
 from theme import colors
 
-from components.cards import content_card
+from .controller import controller_off, controller_bmi, controller_teste
 
-def home(page: ft.Page):
+from components.functionButton import functionbutton
+from components.submitButton import submitbutton
+from components.lights import light_detail
 
-    async def open_BMI(e):
-        await page.push_route("/bmi")
+def home_view(page: ft.Page):
+            
+    on_click, form_content, result_content  = controller_off()
 
-    title = ft.Text("Health Checker", theme_style=ft.TextThemeStyle.HEADLINE_LARGE, color=colors.BLACK, weight=ft.FontWeight.BOLD)
-    subtitle = ft.Text("Chese your checker and see how you are!", theme_style=ft.TextThemeStyle.HEADLINE_MEDIUM, color= colors.BLACK)
-    home_page = ft.Column(
-                    scroll=ft.ScrollMode.AUTO,
-                    horizontal_alignment= ft.CrossAxisAlignment.CENTER,
-                    controls=[
-                        title, subtitle,
-                        ft.Divider(),
-                        ft.Container(
-                            alignment=ft.Alignment.CENTER,
-                            content=ft.Row(
-                                wrap=True,
-                                alignment=ft.MainAxisAlignment.CENTER,
-                                controls=[content_card(open_BMI)]
-                            )
-                        ),
-                        
-                    ]
+    title = ft.Text("Body Metrics", theme_style=ft.TextThemeStyle.HEADLINE_LARGE, color=colors.BLACK, weight=ft.FontWeight.BOLD)
+    subtitle = ft.Text("Choose a tool and see your results!", theme_style=ft.TextThemeStyle.HEADLINE_MEDIUM, color= colors.BLACK)
+    form_screen = ft.Card(
+        width=400,
+        height=500,
+        content=form_content
+    )
+    result_screen = ft.Card(
+        width=400,
+        height=350,
+        content=result_content
+    )
+    submit_btn = submitbutton(on_click)
+
+    def choose(num):
+        nonlocal on_click, form_content, result_content
+        match num:
+            case 1:
+                on_click, form_content, result_content = controller_bmi(page)
+            case 2: 
+                on_click, form_content, result_content = controller_teste()
+            case _:
+                print("Valor invalido")
+
+        form_screen.content = form_content
+        result_screen.content = result_content
+        submit_btn.on_click = on_click
+        page.update()
+        print(num)
+
+    info_card = ft.Container(
+                    border_radius=10,
+                    padding=16,
+                    bgcolor=colors.ALL_SYSTEMS_RED,
+                    width=400,
+                    height=650,
+                    content=
+                        ft.Column(
+                            alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                            horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+                            controls=[light_detail(),form_screen,
+                                submit_btn
+                            ]
+                        )
+                    )
+
+    result_card = ft.Container(
+                    border_radius=10,
+                    padding=16,
+                    bgcolor=colors.ALL_SYSTEMS_RED,
+                    width=400,
+                    height=550, 
+                    content=
+                        ft.Column(
+                            alignment=ft.MainAxisAlignment.CENTER,
+                            horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+                            controls=[result_screen,
+                               ft.Row(
+                                    wrap=True,
+                                    spacing=0,
+                                    run_spacing=0,
+                                    controls=[
+                                        functionbutton(lambda _:choose(1), "BMI"),
+                                        functionbutton(lambda _:choose(2), "Teste")
+                                    ]
+                                )   
+                            ]
+                        )
+                    )
+    
+
+
+
+    home = ft.Column(
+                    expand=True,
+                    alignment=ft.MainAxisAlignment.SPACE_EVENLY, 
+                    horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+                    controls=[  ft.Column(horizontal_alignment=ft.CrossAxisAlignment.CENTER,controls=[title,subtitle]),
+                                ft.Row(
+                                    alignment=ft.MainAxisAlignment.CENTER,
+                                    vertical_alignment=ft.CrossAxisAlignment.END,
+                                    spacing=0,
+                                    controls=[info_card,result_card       
+                                    ]
+                                )
+                            ]
                 )
-    return home_page
+            
+
+    return home
