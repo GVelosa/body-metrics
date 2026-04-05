@@ -2,7 +2,7 @@ import flet as ft
 
 from theme import colors
 
-from .controller import controller_off, controller_bmi, controller_teste
+from .controller import controller_off, controller_bmi, controller_body_fat
 
 from components.functionButton import functionbutton
 from components.submitButton import submitbutton

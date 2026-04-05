@@ -2,7 +2,7 @@ import flet as ft
 
 from features.bmi.view import bmi_form, bmi_result
 from features.bmi.controller import bmi_calculator
-from features.qualqueroutracoisa.view import body_fat_form, body_fat_result
+from features.bodyFat.view import body_fat_form, body_fat_result
 
 def controller_off():
     form_content = ft.Column(controls=[ft.Text("")])
