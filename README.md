@@ -1,5 +1,7 @@
 # Body Metrics
 
+![Example image of the program in execution.](docs/assets/example.png)
+
 A simple health utility app built with **Python** that provides quick calculations and insights for basic health metrics.
 
 The application presents tools as interactive cards, allowing users to easily access and calculate important health indicators through a clean and intuitive interface.
