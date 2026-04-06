@@ -2,6 +2,7 @@ import flet as ft
 
 from features.bmi.view import bmi_form, bmi_result
 from features.bmi.controller import bmi_calculator
+from features.bodyFat.controller import body_fat_calculator
 from features.bodyFat.view import body_fat_form, body_fat_result
 
 def controller_off():
@@ -25,8 +26,23 @@ def controller_bmi(page):
                                     )
     return on_click, form_content, result_content
 
-def controller_body_fat():
-    body_fat_result_view = body_fat_result()
-    body_fat_form_view = body_fat_form()
-    on_click = lambda _: print("teste")
-    return on_click, body_fat_result_view, body_fat_form_view
+def controller_body_fat(page):
+    form, sex_checkbox, user_height, user_weight, user_age, user_neck, user_waist, user_hip = body_fat_form()
+    result, height_text, weight_text, age_text, navy_body_fat_text, bmi_body_fat_text, category_text = body_fat_result()
+    on_click = lambda _: body_fat_calculator(
+                                        user_height,
+                                        user_weight,
+                                        user_age,
+                                        user_neck,
+                                        user_waist,
+                                        user_hip,
+                                        not sex_checkbox.value,
+                                        height_text,
+                                        weight_text,
+                                        age_text,
+                                        navy_body_fat_text,
+                                        bmi_body_fat_text,
+                                        category_text,
+                                        page
+                                    )
+    return on_click, form, result

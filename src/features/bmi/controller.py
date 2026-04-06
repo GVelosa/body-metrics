@@ -23,11 +23,11 @@ def bmi_calculator(
     try:
         weight = float(user_weight.value)
         height = float(user_height.value)
-        bmi = round((weight/((height/100) ** 2)), 2)
+        bmi = round((weight/((height/100)**2)), 2)
 
         height_text.value = user_height.value
         weight_text.value = user_weight.value
-        bmi_text.value = str(bmi)
+        bmi_text.value = f"{bmi} kg/m2"
         
         for limit, classification, degree in bmi_table:
             if bmi < limit:

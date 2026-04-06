@@ -7,6 +7,8 @@ from pages.home.view import home_view
 def main(page: ft.Page):
     page.title = "Body Metrics"
     page.window.maximized = True
+    page.width = 1920
+    page.height = 1080
 
     def route_change():
         page.views.clear()
@@ -14,9 +16,22 @@ def main(page: ft.Page):
             ft.View(
                 route="/",
                 bgcolor = colors.WHITE,
+                padding=0,
                 controls=[
-                    home_view(page)
-                ],
+                ft.Stack(
+                    controls=[
+                        ft.Image(
+                            src="bg_pokemon.png",
+                            width=page.width,
+                            height=page.height,
+                            fit=ft.BoxFit.COVER,
+                            expand=True,
+                        ),
+                        home_view(page),  # seu conteúdo por cima
+                    ],
+                expand=True,
+                ),
+                ] 
             )
         )
 

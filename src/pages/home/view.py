@@ -7,14 +7,28 @@ from .controller import controller_off, controller_bmi, controller_body_fat
 from components.functionButton import functionbutton
 from components.submitButton import submitbutton
 from components.lights import light_detail
+from components.genericText import generictext
 
 def home_view(page: ft.Page):
             
     on_click, form_content, result_content  = controller_off()
 
+    
     title = ft.Text("Body Metrics", theme_style=ft.TextThemeStyle.HEADLINE_LARGE, color=colors.BLACK, weight=ft.FontWeight.BOLD)
     subtitle = ft.Text("Choose a tool and see your results!", theme_style=ft.TextThemeStyle.HEADLINE_MEDIUM, color= colors.BLACK)
+    letter = ft.Container(
+        bgcolor=colors.WHITE,
+        padding=20,
+        border_radius=20,
+        content=ft.Column(
+            horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+            controls=[
+                title, subtitle
+            ]
+        )
+    )
     form_screen = ft.Container(
+        padding=6,
         width=400,
         height=500,
         content=form_content,
@@ -32,6 +46,7 @@ def home_view(page: ft.Page):
         width=400,
         height=300,
         border_radius=12,
+        padding=6,
         content=result_content,
         bgcolor=colors.SAINT_DEEP_BLACK,
         shadow=ft.BoxShadow(
@@ -57,10 +72,10 @@ def home_view(page: ft.Page):
         match num:
             case 1:
                 on_click, form_content, result_content = controller_bmi(page)
-                selection_screen.content = ft.Text("BMI")
+                selection_screen.content = generictext("BMI")
             case 2: 
-                on_click, form_content, result_content = controller_body_fat()
-                selection_screen.content = ft.Text("BodyFat")
+                on_click, form_content, result_content = controller_body_fat(page)
+                selection_screen.content = generictext("BodyFat %")
             case _:
                 print("Valor invalido")
 
@@ -141,7 +156,7 @@ def home_view(page: ft.Page):
                     expand=True,
                     alignment=ft.MainAxisAlignment.SPACE_EVENLY, 
                     horizontal_alignment=ft.CrossAxisAlignment.CENTER,
-                    controls=[  ft.Column(horizontal_alignment=ft.CrossAxisAlignment.CENTER,controls=[title,subtitle]),
+                    controls=[  letter,
                                 ft.Row(
                                     alignment=ft.MainAxisAlignment.CENTER,
                                     vertical_alignment=ft.CrossAxisAlignment.END,
